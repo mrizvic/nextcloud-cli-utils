@@ -3,6 +3,8 @@
 ## IDEA
 Utilities are created during administration of several nextcloud instances.
 
+PLEASE NOTE: cloudsend.sh was taken from https://github.com/tavinus/cloudsend.sh
+
 ## USAGE
 Start by running `nc_help` and then suit yourself :)
 
