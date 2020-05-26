@@ -1,3 +1,11 @@
 #!/usr/bin/bash
 help_string="Show failed logins from nextcloud.log"
-jq -r '. | select(.message|type=="string") | select(.message | contains("Login"))' /var/log/nextcloud/nextcloud.log | jq -r '[.time,.message,.userAgent] | @text'
+
+LOGFILE="/var/log/nextcloud/nextcloud.log"
+if [ ! -z $LOGFILE ]; then
+	jq -r '. | select(.message|type=="string") | select(.message | contains("Login"))' ${LOGFILE} | jq -r '[.time,.message,.userAgent] | @text'
+else
+        echo "### MISSING LOGFILE: ${LOGFILE}"
+        exit 1
+fi
+

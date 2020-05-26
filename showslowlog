@@ -1,3 +1,9 @@
 #!/usr/bin/bash
 help_string="Show mysql slow.log entries"
-tail -20f /var/log/mysql/slow.log
+LOGFILE="/var/log/mysql/slow.log"
+if [ ! -z $LOGFILE ]; then
+	tail -20f /var/log/mysql/slow.log
+else
+	echo "### MISSING LOGFILE: ${LOGFILE}"
+	exit 1
+fi

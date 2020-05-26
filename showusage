@@ -1,3 +1,9 @@
 #!/usr/bin/env bash
 help_string="Show disk usage on nextcloud/data directory"
-du -h -s /var/www/nextcloud/data/*
+DIR="/var/www/nextcloud/data"
+if [ -d $DIR ]; then
+	du -h -s ${DIR}/*
+else
+	echo "### MISSING DIRECTORY: ${DIR}"
+	exit 1
+fi

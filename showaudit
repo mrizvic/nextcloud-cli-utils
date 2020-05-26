@@ -1,3 +1,10 @@
 #!/usr/bin/bash
 help_string="Parse and list nextcloud audit.log entries"
-jq -r '[.time,.remoteAddr,.user,.method,.message] | @text' /var/log/nextcloud/audit.log
+LOGFILE="/var/log/nextcloud/audit.log"
+if [ ! -z $LOGFILE ]; then
+	jq -r '[.time,.remoteAddr,.user,.method,.message] | @text' ${LOGFILE}
+else
+        echo "### MISSING LOGFILE: ${LOGFILE}"
+        exit 1
+fi
+

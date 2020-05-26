@@ -1,10 +1,15 @@
 #!/usr/bin/bash
 help_string="Parse and list nextcloud.log entries"
-
-### PRETTY OUTPUT
-if [ "$1" == "-p" ]; then
-	jq  '. | select(.message|type=="string")' /var/log/nextcloud/nextcloud.log | jq -r '[.time,.remoteAddr,.message] | @text'
+LOGFILE="/var/log/nextcloud/nextcloud.log"
+if [ ! -z $LOGFILE ]; then
+	### PRETTY OUTPUT
+	if [ "$1" == "-p" ]; then
+		jq  '. | select(.message|type=="string")' ${LOGFILE} | jq -r '[.time,.remoteAddr,.message] | @text'
+	else
+		jq . ${LOGFILE}
+		echo "### TRY RUNNING showlog -p"
+	fi
 else
-	jq . /var/log/nextcloud/nextcloud.log
-	echo "### TRY RUNNING showlog -p"
+        echo "### MISSING LOGFILE: ${LOGFILE}"
+        exit 1
 fi

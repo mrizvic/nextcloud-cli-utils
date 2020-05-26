@@ -1,3 +1,9 @@
 #!/usr/bin/env bash
 help_string="Show nextcloud config.php"
-cat /var/www/nextcloud/config/config.php
+CFGFILE="/var/www/nextcloud/config/config.php"
+if [ ! -z $CFGFILE ]; then
+        cat ${CFGFILE}
+else
+        echo "### MISSING LOGFILE: ${CFGFILE}"
+        exit 1
+fi
