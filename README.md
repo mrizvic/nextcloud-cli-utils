@@ -3,6 +3,28 @@
 ## IDEA
 Utilities are created during administration of several nextcloud instances.
 
+## USAGE
+Start by running `nc_help` and then suit yourself :)
+
+```
+$ ./nc_help
+Nextcloud scripts located in /opt/scripts:
+------------------------------------------------------------------------------------------
+clearbruteforces         "Clear entry from oc_bruteforce_attempts table"
+cloudsend.sh             "Uses curl to send files to a shared Nextcloud/Owncloud folder"
+editconf                 "edit nextcloud config.php"
+ncc                      "nextcloud cli command (occ)"
+showaudit                "Parse and list nextcloud audit.log entries"
+showbruteforces          "Show oc_bruteforce_attempts table"
+showconf                 "Show nextcloud config.php"
+showfailedlogin          "Show failed logins from nextcloud.log"
+showlog                  "Parse and list nextcloud.log entries"
+showslowlog              "Show mysql slow.log entries"
+showtagslike             "Show tagged files"
+showusage                "Show disk usage on nextcloud/data directory"
+------------------------------------------------------------------------------------------
+```
+
 ## REQUIREMENTS
 mysql-client, jq, curl
 
@@ -83,27 +105,6 @@ Threads: 17  Questions: 111922  Slow queries: 0  Opens: 104  Flush tables: 1  Op
 
 Copy scripts to `~/bin` or `/usr/local/bin` or similar location.
 
-## USAGE
-Start by running `nc_help` and then suit yourself :)
-
-```
-$ ./nc_help
-Nextcloud scripts located in /opt/scripts:
-------------------------------------------------------------------------------------------
-clearbruteforces         "Clear entry from oc_bruteforce_attempts table"
-cloudsend.sh             "Uses curl to send files to a shared Nextcloud/Owncloud folder"
-editconf                 "edit nextcloud config.php"
-ncc                      "nextcloud cli command (occ)"
-showaudit                "Parse and list nextcloud audit.log entries"
-showbruteforces          "Show oc_bruteforce_attempts table"
-showconf                 "Show nextcloud config.php"
-showfailedlogin          "Show failed logins from nextcloud.log"
-showlog                  "Parse and list nextcloud.log entries"
-showslowlog              "Show mysql slow.log entries"
-showtagslike             "Show tagged files"
-showusage                "Show disk usage on nextcloud/data directory"
-------------------------------------------------------------------------------------------
-```
 ## Disclaimer
 Use at your own risk. I cannot be held responsible for any misinterpretation of output presented to anyone using code from this repository.
 
