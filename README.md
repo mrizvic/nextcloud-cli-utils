@@ -1,4 +1,4 @@
-#NEXTCLOUD CLI UTILS
+# NEXTCLOUD CLI UTILS
 
 ## IDEA
 Utilities are created during administration of several nextcloud instances.
