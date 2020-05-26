@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+help_string="Parse and list nextcloud audit.log entries"
+jq -r '[.time,.remoteAddr,.user,.method,.message] | @text' /var/log/nextcloud/audit.log

@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+help_string="Show nextcloud config.php"
+cat /var/www/nextcloud/config/config.php

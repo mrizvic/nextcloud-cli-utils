@@ -1,0 +1,35 @@
+#!/usr/bin/bash
+help_string="Show tagged files"
+
+FILENAME=$1
+NCDB=$(cat ~/.nextclouddb)
+
+if [ -z "$FILENAME" ]; then
+	echo "MISSING ARGUMENT: <filename> | all"
+	exit 1
+fi
+
+
+if [ "$FILENAME" == "all" ]; then
+	QUERY="
+SELECT oc_storages.id,oc_filecache.path,oc_systemtag.name,FROM_UNIXTIME(oc_filecache.mtime) AS mtime,FROM_UNIXTIME(oc_filecache.storage_mtime) AS storage_mtime
+FROM oc_filecache,oc_systemtag_object_mapping,oc_storages,oc_systemtag
+WHERE oc_systemtag_object_mapping.objectid = oc_filecache.fileid
+  AND oc_storages.numeric_id = oc_filecache.storage
+  AND oc_systemtag.id = oc_systemtag_object_mapping.systemtagid
+ORDER BY oc_storages.id;
+"
+
+else
+	QUERY="
+SELECT oc_storages.id,oc_filecache.path,oc_systemtag.name,FROM_UNIXTIME(oc_filecache.mtime) AS mtime,FROM_UNIXTIME(oc_filecache.storage_mtime) AS storage_mtime
+FROM oc_filecache,oc_systemtag_object_mapping,oc_storages,oc_systemtag
+WHERE oc_systemtag_object_mapping.objectid = oc_filecache.fileid
+  AND oc_storages.numeric_id = oc_filecache.storage
+  AND oc_systemtag.id = oc_systemtag_object_mapping.systemtagid
+  AND oc_filecache.path LIKE '%${FILENAME}%'
+ORDER BY oc_storages.id;
+"
+fi
+
+mysql -e "${QUERY}" -D "${NCDB}"

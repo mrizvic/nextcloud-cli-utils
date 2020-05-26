@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+help_string="edit nextcloud config.php"
+
+vim /var/www/nextcloud/config/config.php

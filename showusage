@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+help_string="Show disk usage on nextcloud/data directory"
+du -h -s /var/www/nextcloud/data/*

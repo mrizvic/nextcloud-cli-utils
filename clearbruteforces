@@ -1,0 +1,18 @@
+#!/usr/bin/bash
+help_string="Clear entry from oc_bruteforce_attempts table"
+
+IP=$1
+NCDB=$(cat ~/.nextclouddb)
+
+if [ -z "$IP" ]; then
+	echo "MISSING ARGUMENT: <ipaddr> | all"
+	exit 1
+fi
+
+
+if [ "$IP" == "all" ]; then
+	mysql -e "DELETE FROM oc_bruteforce_attempts" -D "${NCDB}"
+else
+	mysql -e "DELETE FROM oc_bruteforce_attempts WHERE ip = '$IP';" -D "${NCDB}"
+fi
+

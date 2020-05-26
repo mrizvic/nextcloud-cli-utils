@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+help_string="nextcloud cli command (occ)"
+sudo -u nginx php /var/www/nextcloud/occ "$@"

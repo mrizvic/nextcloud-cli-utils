@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+help_string="Show mysql slow.log entries"
+tail -20f /var/log/mysql/slow.log

@@ -1,0 +1,37 @@
+#!/bin/bash
+
+dir=$(dirname "$(readlink -f "$0")")
+IFS=$'\n'
+
+# ce izpisujemo samo za en ukaz
+if [ $# -eq 1 ]; then
+        bin=$1
+        f="${dir}/${bin}"
+        help_string=$(grep help_string ${f} | cut -d "=" -f2)
+
+        if [ ! -f $f ]; then
+                echo "Command not found: $f"
+                exit 0
+        fi
+
+        if [ -z "$help_string" ]; then
+                echo "No help found for $bin"
+        else
+                printf "%-24s %s\n" $bin $help_string
+        fi
+        exit 0
+fi
+
+echo "Nextcloud scripts located in $dir:"
+echo "------------------------------------------------------------------------------------------"
+for f in $(ls -1 $dir); do
+
+        # skipaj sebe
+        # in car_help
+        if [ "$f" == "nc_help" ] ; then continue; fi
+
+        help_string=$(grep help_string ${dir}/${f} | cut -d "=" -f2)
+        printf "%-24s %s\n" $f $help_string
+done
+echo "------------------------------------------------------------------------------------------"
+
