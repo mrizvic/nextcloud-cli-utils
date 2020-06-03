@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 help_string="Show failed logins from nextcloud.log"
 
 LOGFILE="/var/log/nextcloud/nextcloud.log"
