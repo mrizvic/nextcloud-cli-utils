@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 help_string="Show oc_bruteforce_attempts table"
 NCDB=$(cat ~/.nextclouddb)
 mysql -e "SELECT id,action,FROM_UNIXTIME(occurred) AS occured_datetime, ip, subnet, metadata FROM oc_bruteforce_attempts;" -D "${NCDB}"
