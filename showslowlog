@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 help_string="Show mysql slow.log entries"
 LOGFILE="/var/log/mysql/slow.log"
 if [ ! -z $LOGFILE ]; then
