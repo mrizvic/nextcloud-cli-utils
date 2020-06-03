@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 help_string="Parse and list nextcloud audit.log entries"
 LOGFILE="/var/log/nextcloud/audit.log"
 if [ ! -z $LOGFILE ]; then
