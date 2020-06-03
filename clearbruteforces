@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 help_string="Clear entry from oc_bruteforce_attempts table"
 
 IP=$1
