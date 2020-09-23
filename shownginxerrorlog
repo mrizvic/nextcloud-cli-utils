@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+help_string="Show nginx error.log"
+ERRLOG="/var/log/nginx/error.log"
+sudo cat $ERRLOG
