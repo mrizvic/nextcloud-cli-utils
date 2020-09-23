@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+help_string="Show network interface bandwidth stats"
+sudo /usr/local/bin/tcpstat -i ens192 -o "R=%R\tS=%S\tpps=%p\tavg=%a\tBps=%B\tbps=%b\n" 1
